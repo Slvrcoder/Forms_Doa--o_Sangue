@@ -11,12 +11,18 @@ form.addEventListener('submit', function(e) {
     let idade = document.getElementById('idade').value;
     let peso = document.getElementById('peso').value;
     let tipoSangue = document.getElementById('tipoSangue').value;
+    let telefone = document.getElementById('telefone').value;
+    let estado = document.getElementById('estado').value;
+    let cidade = document.getElementById('cidade').value;
 
     document.getElementById('erroNome').textContent = '';
     document.getElementById('erroEmail').textContent = '';
     document.getElementById('erroIdade').textContent = '';
     document.getElementById('erroPeso').textContent = '';
     document.getElementById('erroTipoSangue').textContent = '';
+    document.getElementById('erroTelefone').textContent = '';
+    document.getElementById('erroEstado').textContent = '';
+    document.getElementById('erroCidade').textContent = '';
 
     if (nome.length < 10) {
         document.getElementById('erroNome').textContent =
@@ -40,7 +46,22 @@ form.addEventListener('submit', function(e) {
             'O peso mínimo para doação é de 50 kg.';
         valido = false;
     }
-    
+
+    if (telefone.length < 10) {
+        document.getElementById('erroTelefone').textContent =
+            'Por favor, insira um número de telefone válido.';
+        valido = false;
+    }
+    if (estado === '') {
+        document.getElementById('erroEstado').textContent =
+            'Por favor, selecione um estado.';
+        valido = false;
+    }
+    if (cidade === '') {
+        document.getElementById('erroCidade').textContent =
+            'Por favor, insira a cidade.';
+        valido = false;
+    }
 
     if (valido) {
         document.getElementById('resultado').innerHTML = `
@@ -50,6 +71,9 @@ form.addEventListener('submit', function(e) {
         Idade: ${idade} <br>
         Peso: ${peso} kg <br>
         Tipo Sanguíneo: ${tipoSangue} <br>
+        Telefone: ${telefone} <br>
+        Cidade: ${cidade} <br>
+        Estado: ${estado} <br>
         `;
     }
 
